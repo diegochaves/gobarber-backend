@@ -14,7 +14,11 @@ class File extends Model {
         },
       },
       {
+        defaultScope: {
+          attributes: ['path'],
+        },
         sequelize,
+        modelName: 'File',
       }
     );
     return this;

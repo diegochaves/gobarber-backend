@@ -12,7 +12,17 @@ class User extends Model {
         provider: Sequelize.BOOLEAN,
       },
       {
+        defaultScope: {
+          attributes: ['id', 'name', 'email', 'provider'],
+          include: ['avatar'],
+        },
+        scopes: {
+          login: {
+            attributes: ['id', 'name', 'email', 'password_hash'],
+          },
+        },
         sequelize,
+        modelName: 'User',
       }
     );
 
