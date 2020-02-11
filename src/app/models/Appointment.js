@@ -8,7 +8,12 @@ class Appointment extends Model {
         canceled_at: Sequelize.DATE,
       },
       {
+        defaultScope: {
+          attributes: ['id', 'date', 'canceled_at'],
+          include: ['user', 'provider'],
+        },
         sequelize,
+        modelName: 'Appointment',
       }
     );
     return this;
